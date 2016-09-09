@@ -1,0 +1,5 @@
+This directory is used to hold scripts to configure the environment where the
+jobs will run.
+
+The ci-configurator charm looks for the setup.d directory and executes any
+executable script inside the dir using run-parts.
