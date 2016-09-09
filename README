@@ -1,0 +1,17 @@
+This is an example config-repo for the ci-configurator charm (that links to jenkins).
+
+The layout is as follows:
+├── control.yml -- a file that specifies dependencies to install
+├── jenkins
+│   └── jobs
+│       ├── *.yml -- your jenkins job builder definitions
+│       └── update -- what is run right before your update (must exist & exec'able)
+├── setup.d -- any other scripts to be run on setup (must be exec'able)
+│   └── README
+└── unit_tests
+    └── test.sh -- a simple test to see if your jenkins jobs are valid
+
+
+For more information on jenkins-job-builder definitions look at http://docs.openstack.org/infra/jenkins-job-builder/definition.html
+
+Please file bugs to/the upstream repo is: https://github.com/lutostag/jenkins-charm-ci-config-repo
