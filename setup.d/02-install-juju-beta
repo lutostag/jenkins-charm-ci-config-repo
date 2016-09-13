@@ -1,0 +1,5 @@
+#!/bin/sh
+
+add-apt-repository -y ppa:juju/stable
+apt-get update
+apt install -y juju

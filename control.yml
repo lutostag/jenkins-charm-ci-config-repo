@@ -2,3 +2,4 @@ required_jenkins_packages:
     - git
     - python-pip
     - juju
+    - software-properties-common
