@@ -1,4 +1,4 @@
 required_jenkins_packages:
     - git
-    - pip
+    - python-pip
     - juju
