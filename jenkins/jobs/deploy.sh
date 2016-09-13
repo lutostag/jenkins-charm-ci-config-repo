@@ -1,5 +1,7 @@
 #!/bin/bash -xe
-juju show-controller jenkins-clean-test ||
+rm -fr *
+
+juju show-controller jenkins-clean-test >/dev/null ||
 echo -e 'jenkins-clean-test\npass\npass' | juju register $(vault-client read secret/jenkins-clean-test | awk '/key/{print $2}')
 
 git clone https://github.com/lutostag/jenkins-charm-ci-config-repo.git -b self-ci
