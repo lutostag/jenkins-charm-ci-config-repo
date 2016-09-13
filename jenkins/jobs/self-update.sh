@@ -1,6 +1,4 @@
 #!/bin/bash -xe
-mkdir artifacts
-
 juju show-model jenkins-clean-test || juju register $(vault-client read secret/jenkins) 
 
 git clone https://github.com/lutostag/layer-jenkins.git -b built

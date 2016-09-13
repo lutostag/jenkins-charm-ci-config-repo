@@ -34,9 +34,6 @@
             fail: true
     builders:
         - shell: /etc/ci-configurator/ci-config/jenkins/jobs/deploy.sh
-    publishers:
-        - archive:
-            artifacts: 'artifacts/*'
 
 - job:
     name: self-update
@@ -53,6 +50,3 @@
             fail: true
     builders:
         - shell: /etc/ci-configurator/ci-config/jenkins/jobs/self-update.sh
-    publishers:
-        - archive:
-            artifacts: 'artifacts/*'

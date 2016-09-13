@@ -1,6 +1,4 @@
 #!/bin/bash -xe
-mkdir artifacts
-
 juju show-model jenkins-clean-test || juju register $(vault-client read secret/jenkins-clean-test) 
 
 git clone https://github.com/lutostag/jenkins-charm-ci-config-repo.git -b self-ci
