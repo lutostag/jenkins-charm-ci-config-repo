@@ -1,5 +1,6 @@
 #!/bin/bash -xe
-juju show-model jenkins-clean-test || juju register $(vault-client read secret/jenkins-clean-test | awk '/key/{print $2}') 
+juju show-model jenkins-clean-test ||
+echo 'jenkins-clean-test' | juju register $(vault-client read secret/jenkins-clean-test | awk '/key/{print $2}')
 
 git clone https://github.com/lutostag/jenkins-charm-ci-config-repo.git -b self-ci
 juju deploy -m jenkins-clean-test jenkins-charm-ci-config-repo/bundle.yaml
