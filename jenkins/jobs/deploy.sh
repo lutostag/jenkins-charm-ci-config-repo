@@ -8,6 +8,8 @@ git clone https://github.com/lutostag/jenkins-bundle-example.git -b self-ci
 juju deploy ./jenkins-bundle-example/bundle.yaml
 juju wait
 
-git clone https://github.com/lutostag/layer-jenkins.git -b built
-juju upgrade-charm -p layer-jenkins jenkins
+git clone https://github.com/lutostag/layer-jenkins.git -b built jenkins
+juju upgrade-charm --path=./jenkins jenkins
 juju wait
+
+juju status | grep error >/dev/null && return 1~
