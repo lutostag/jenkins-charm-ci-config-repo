@@ -5,6 +5,7 @@
          url: https://github.com/lutostag/layer-jenkins.git
          branches:
           - origin/built
+         skip-tag: true
 
 - scm:
     name: jenkins-bundle
@@ -13,6 +14,7 @@
          url: https://github.com/lutostag/jenkins-bundle-example.git
          branches:
           - origin/self-ci
+         skip-tag: true
 
 - scm:
     name: bundle-and-deps
