@@ -1,70 +1,23 @@
-- scm:
-    name: config-repo
-    scm:
-      - git:
-         url: git@github.com:lutostag/jenkins-charm-ci-config-repo.git
-         branches:
-          - origin/master
-
-- scm:
-    name: jenkins-charm
-    scm:
-      - git:
-         url: git@github.com:freeekanayaka/layer-jenkins.git
-         branches:
-          - origin/master
-
-- scm:
-    name: jenkins-bundle
-    scm:
-      - git:
-         url: git@github.com:lutostag/jenkins-bundle-example.git
-         branches:
-          - origin/master
-
-- scm:
-    name: bundle-and-deps
-    scm:
-      - jenkins-bundle
-      - jenkins-charm
-
 - job:
-    name: deploy-bundle-test
-    scm:
-        - bundle-and-deps
+    name: test1
     concurrent: false
     triggers:
-        - pollscm:
-            cron: "*/30 * * * *"
+        - timed: "*/30 * * * *"
     wrappers:
         - timeout:
             timeout: 1380
             fail: true
     builders:
-        - shell: /etc/ci-configurator/ci-config/jenkins/jobs/deploy.sh
-    publishers:
-        - archive:
-            artifacts: 'artifacts/*'
+        - shell: /etc/ci-configurator/ci-config/jenkins/jobs/one.sh
 
 - job:
-    name: self-update
-    scm:
-        - config-repo
+    name: test2
     concurrent: false
     triggers:
-        - pollscm:
-            cron: "*/30 * * * *"
-        - build-result:
-            cron: '* * * * *'
-            groups:
-              - jobs:
-                  - deploy-bundle-test
+        - timed: "@midnight"
     wrappers:
         - timeout:
             timeout: 1440
             fail: true
     builders:
-        - shell: /etc/ci-configurator/ci-config/jenkins/jobs/self-update.sh
-    publishers:
-        - archive:
-            artifacts: 'artifacts/*'
+        - shell: /etc/ci-configurator/ci-config/jenkins/jobs/two.sh
