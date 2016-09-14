@@ -5,7 +5,7 @@ rm -fr *
 juju show-controller jenkins-clean-test >/dev/null ||
 echo "Waiting for registration secret to be passed into vault" &&
 while true;
-    do vault-client read -field=register-key secret/charm/juju-model >/dev/null && break; sleep 20;
+    do vault-client read -field=register-key secret/charm/juju-model 2>/dev/null && break; sleep 20;
 done &&
 echo -e 'jenkins-clean-test\npass\npass' | juju register $(vault-client read -field=register-key secret/charm/juju-model)
 
