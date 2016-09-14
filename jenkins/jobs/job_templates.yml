@@ -2,7 +2,7 @@
     name: jenkins-charm
     scm:
       - git:
-         url: git@github.com:lutostag/layer-jenkins.git
+         url: https://github.com/lutostag/layer-jenkins.git
          branches:
           - origin/built
 
@@ -10,7 +10,7 @@
     name: jenkins-bundle
     scm:
       - git:
-         url: git@github.com:lutostag/jenkins-bundle-example.git
+         url: https://github.com/lutostag/jenkins-bundle-example.git
          branches:
           - origin/self-ci
 
