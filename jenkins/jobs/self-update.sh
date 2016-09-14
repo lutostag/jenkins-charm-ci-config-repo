@@ -17,4 +17,5 @@ git clone https://github.com/lutostag/layer-jenkins.git -b built jenkins
 juju upgrade-charm --path=./jenkins jenkins
 juju wait
 
-juju status | grep error >/dev/null && return 1
+# check juju status for errors
+juju status | grep error >/dev/null && return 1 || true
